@@ -28,10 +28,15 @@
 
 <style>
     .booksbtn{
-        display:none;
+        opacity: 0;
     }
     .bookcard:hover + .booksbtn, .booksbtn:hover{
-        display: inline;
+        opacity: 100;
+        transition: .3s;
+    }
+    .below-carousel{
+        border-radius:50%;
+        background-color:black
     }
     .below-carousel{
         /* outline:black;

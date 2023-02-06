@@ -5,7 +5,7 @@
 @section('body')
     <div class="d-flex flex-wrap justify-content-center">
         @if ($cartHeaders == '[]')
-            <h3>Cart is empty</h3>
+            <h3 class="mt-4">Cart is empty</h3>
         @endif
         @if ($errors->any())
             <p class="text-warning pt-3">{{$errors->first()}}</p>
@@ -22,7 +22,7 @@
                 @foreach ($cartHeader->cartDetail as $cartDetail)
                     <div class="row border rounded m-3 align-items-center">
                         <div class="col-md-4 p-3">
-                            <img style="max-height:20rem; max-width:10rem; width:auto; height:auto;" src="{{url('storage\app\public\images\books\\'.$cartDetail->book->photoPath)}}" class="bookimage img-fluid rounded-start ms-4" alt="{{$cartDetail->book->title}}">
+                            <img style="max-height:20rem; max-width:10rem; width:auto; height:auto;" src="{{url('storage\app\public\images\books\\'.$cartDetail->book->photoPath)}}" class="bookimage img-fluid rounded ms-4" alt="{{$cartDetail->book->title}}">
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">

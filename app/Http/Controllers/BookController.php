@@ -62,12 +62,7 @@ class BookController extends BaseController
 
     // param boleh id, boleh ISBN. ISBN might be better.
     public function bookDetail($id){
-        $bookLibraries = BookLibrary::where('bookId', $id)->get();
-
-        // book id not found.
-        if($bookLibraries == '[]'){
-            return redirect()->route('home');
-        }
+        $book = Book::whereId($id)->first();
 
         $stock = 0;
 
@@ -79,12 +74,12 @@ class BookController extends BaseController
             ->first()->total_stock;
         }
 
-        // dd($stock);
+        // dd($book);
         if(Auth::user()->role_id == 1){
-            return view('bookDetailAdmin', compact('bookLibraries', 'stock'));
+            return view('bookDetailAdmin', compact('book', 'stock'));
         }
         else if(Auth::user()->role_id == 2){
-            return view('bookDetailMember', compact('bookLibraries', 'stock'));
+            return view('bookDetailMember', compact('book', 'stock'));
         }
         else{
             return redirect()->route('home');
@@ -177,6 +172,19 @@ class BookController extends BaseController
         // Storage::putFileAs('public/images/books/', $image, $imageName);
         // $inputPhotopath = $imageName;
 
+        //validate input first
+        $request->validate([
+            'isbn' => 'required|min:10|max:13|unique:books,isbn',
+            'title' => 'required|min:5|string',
+            'synopsis' => 'required|min:5',
+            'publishedYear' => 'required|min:4|max:4',
+            'stock' => 'required|min:1',
+            'author' => 'required',
+            'language' => 'required',
+            'publisher' => 'required',
+            'weight' => 'required|min:1'
+        ]);
+
         //Update Book Details
         Book::where('id', $bookId) //Eloquent?
         ->update([
@@ -190,12 +198,6 @@ class BookController extends BaseController
             'weight' => $request->weight,
         ]);
 
-        //Update Categories
-        BookCategory::where('bookId', $bookId)
-        ->first()
-        ->update([
-            'categoryId' => $request->category
-        ]);
 
         //Update Stock at Library
         $userId = Auth::user()->id;
@@ -222,6 +224,18 @@ class BookController extends BaseController
     }
 
     public function insertBooktoMaster(Request $request){
+        $request->validate([
+            'isbn' => 'required|min:10|max:13|unique:books,isbn',
+            'title' => 'required|min:5|string',
+            'synopsis' => 'required|min:5',
+            'publishedYear' => 'required|min:4|max:4',
+            'author' => 'required',
+            'language' => 'required',
+            'category' => 'required',
+            'publisher' => 'required',
+            'weight' => 'required|min:1',
+            'inputImage' => 'required|file'
+        ]);
 
         $image = $request->file('inputImage');
         $imageName = $image->getClientOriginalName();
@@ -256,14 +270,14 @@ class BookController extends BaseController
     }
 
     public function viewAddToLibrary(){
-
-        return view('addToLibrary');
+        $books = Book::all();
+        return view('addToLibrary', compact('books'));
     }
 
     public function addToLibrary(Request $request){
 
         $request->validate([
-            'isbn' => 'required|min:13|max:13|',
+            'isbn' => 'required|min:10|max:13|',
             'stock' => 'required|min:1',
         ]); //Validate ISBN
 

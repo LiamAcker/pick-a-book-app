@@ -1,4 +1,4 @@
-@extends('layout.fromInsertBook')
+@extends('layout.fromInsertUpdateBook')
 
 @section('title', 'Insert Book')
 
@@ -25,9 +25,14 @@
 @endsection
 
 @section('categoryOption')
-    @foreach ($categories as $category)
-        <option value="{{$category->id}}">{{$category->name}}</option>
-    @endforeach
+    <div class="col-md-6 mb-4">
+        <label for="category" class="form-label">Category</label>
+        <select class="form-select" aria-label="Default select example" name='category'>
+            @foreach ($categories as $category)
+                <option value="{{$category->id}}">{{$category->name}}</option>
+            @endforeach
+        </select>
+    </div>
 @endsection
 
 @section('publisherOption')

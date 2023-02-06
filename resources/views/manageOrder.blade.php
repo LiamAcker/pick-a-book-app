@@ -40,13 +40,13 @@
                             <td class="align-middle text-center">{{$returnDate}}</td>
                             <td class="text-center align-middle" style="max-width: 250px;">
                                 @if ($order->statusId == 1)
-                                    <span class="text-white bg-primary p-1">{{$order->status->status}}</span>
+                                    <span class="text-primary p-1">{{$order->status->status}}</span>
                                 @elseif ($order->statusId == 2)
-                                    <span class="text-white bg-secondary p-1">{{$order->status->status}}</span>
+                                    <span class="text-secondary p-1">{{$order->status->status}}</span>
                                 @elseif ($order->statusId == 3)
-                                    <span class="text-white bg-dark p-1">{{$order->status->status}}</span>
+                                    <span class="text-dark p-1">{{$order->status->status}}</span>
                                 @elseif ($order->statusId == 4)
-                                    <span class="text-white bg-success p-1">{{$order->status->status}}</span>
+                                    <span class="text-success p-1">{{$order->status->status}}</span>
                                 @endif
                             </td>
                             <td class="text-center d-flex justify-content-center align-middle py-3">

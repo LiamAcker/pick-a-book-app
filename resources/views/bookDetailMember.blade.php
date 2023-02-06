@@ -5,12 +5,12 @@
 @endsection
 
 @section('details')
-    <form action="/add-book/{{$bookLibraries[0]->bookId}}" method="post">
+    <form action="/add-book/{{$book->id}}" method="post">
         @csrf
         <select class="form-select" aria-label="Default select example" name='library'>
             {{-- error when no library was chosen --}}
             <option selected disabled value="0">Choose Available Library</option>
-            @foreach ($bookLibraries as $bl)
+            @foreach ($book->bookLibrary as $bl)
                 @if ($bl->stock >= 1)
                     <option value="{{$bl->libraryId}}">{{$bl->library->name}} - {{$bl->stock}} book(s) remaining</option>
                 @endif

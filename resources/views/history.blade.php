@@ -9,13 +9,14 @@
             {{-- ketika status masih order confirmed / belom atur pickup, maka gak masuk di history --}}
             {{-- kalo pickup method confirmed = sudah atur pickup, tapi blm diaccept sama admin --}}
             @if ($order->statusId != 1)
-            <div class="card mb-2 mt-3 w-75">
+            <div class="card my-3 px-4 w-75">
                 <div class="card-body">
                     @php
                         $date = Carbon::parse($order->date)->format('d M Y');
                         $returnDate = Carbon::parse($date)->addDays(30)->format('d M Y');
+                        $dateForId = Carbon::parse($order->date)->format('Ymd');
                     @endphp
-
+                    <h5 class="fw-bold mt-3">Order #{{$dateForId}}-{{$order->id}}</h5>
                     <h5 class="fw-bold mt-3">{{$order->library->name}} - {{$date}} - Return by {{$returnDate}}</h5>
 
                     @foreach ($order->orderDetail as $orderDetail)

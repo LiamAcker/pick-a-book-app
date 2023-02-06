@@ -22,7 +22,7 @@
                 <a class="nav-link" href="{{route('profile')}}">Profile</a>
             </li>
         </ul>
-        <form class="d-flex mx-1" role="logout" action="/logout" method="post">
+        <form class="m-0" role="logout" action="/logout" method="post">
             @csrf
             <button class="btn btn-outline-danger" type="submit">Logout</button>
         </form>

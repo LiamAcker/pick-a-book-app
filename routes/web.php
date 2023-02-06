@@ -38,9 +38,6 @@ Route::middleware(['middleware' => 'guestM'])->group(function () {
 
 Route::middleware(['middleware' => 'userM'])->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
-    // might want to change the route to '/'
-    // Reply: maybe '/' is more suitable for welcome page(?)
-    // RE:RE: for now it's for home, but feel free to change ya
     Route::get('/', [BookController::class, 'home'])->name('home');
     Route::get('/newRelease', [BookController::class, 'newRelease'])->name('newRelease');
     Route::get('/popularBooks', [BookController::class, 'popularBooks'])->name('popularBooks');
@@ -61,7 +58,6 @@ Route::middleware(['middleware' => 'memberM'])->group(function () {
     Route::get('/cart', [CartHeaderController::class, 'cart'])->name('cart');
     Route::delete('/cart/delete/{libraryId}/{bookId}', [CartHeaderController::class, 'removeFromCart']);
     Route::post('/cart/checkout/{libraryId}', [CartHeaderController::class, 'checkout']);
-    // Route::get('/checkout', [CourierController::class, 'checkout']);
     Route::get('/pickup', [CourierController::class, 'pickup'])->name('pickup');
     Route::post('/pickup/confirm/{orderId}', [CourierController::class, 'checkout']);
     Route::get('/history', [MemberController::class, 'history'])->name('history');

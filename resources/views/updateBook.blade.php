@@ -1,4 +1,4 @@
-@extends('layout.fromUpdateBook')
+@extends('layout.fromInsertUpdateBook')
 
 @section('title', 'Update Book')
 
@@ -26,8 +26,6 @@
 
 @section('synopsisValue')
 {{$currBook->synopsis}}
-{{-- hrs rapet kyk gini ya krn textarea --}}
-{{-- {{$currBike->bikeDescription}} --}}
 @endsection
 
 @section('publishedYearValue')
@@ -35,12 +33,15 @@
 @endsection
 
 @section('stockValue')
-    value='{{$currStock}}'
+<div class="col-md-6 mb-4">
+    <label for="publishedYear" class="form-label">Stock</label>
+    <input type="number" class="form-control" name='stock' id="stock" placeholder="Book Stock" value={{$currStock}}>
+</div>
 @endsection
 
 @section('authorOption')
     <option value="{{$currBook->authorId}}">{{$currBook->author->name}}</option>
-    @foreach ($authors as $author) <!-- pake foreach krn datanya berbntk array -->
+    @foreach ($authors as $author)
         @if ($author->id != $currBook->authorId)
             <option value="{{$author->id}}">{{$author->name}}</option>
         @endif
@@ -49,7 +50,7 @@
 
 @section('languageOption')
 <option value="{{$currBook->languageId}}">{{$currBook->language->name}}</option>
-    @foreach ($languages as $language) <!-- pake foreach krn datanya berbntk array -->
+    @foreach ($languages as $language)
         @if ($language->id != $currBook->languageId)
             <option value="{{$language->id}}">{{$language->name}}</option>
         @endif
@@ -57,15 +58,9 @@
 
 @endsection
 
-@section('categoryOption')
-    @foreach ($categories as $category)
-        <option value="{{$category->id}}">{{$category->name}}</option>
-    @endforeach
-@endsection
-
 @section('publisherOption')
 <option value="{{$currBook->publisherId}}">{{$currBook->publisher->name}}</option>
-    @foreach ($publishers as $publisher) <!-- pake foreach krn datanya berbntk array -->
+    @foreach ($publishers as $publisher)
         @if ($publisher->id != $currBook->publisherId)
             <option value="{{$publisher->id}}">{{$publisher->name}}</option>
         @endif

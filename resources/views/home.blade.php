@@ -11,26 +11,20 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="{{asset('images/commercial_1.jpeg')}}" class="bookimage d-block w-100" alt="...">
+                <img src="{{asset('images/commercial_1.jpeg')}}" class="bookimage d-block w-100" style="height: 325px; object-fit: cover; position: relative;">
             </div>
             <div class="carousel-item">
-                <img src="{{asset('images/commercial_2.jpeg')}}" class="bookimage d-block w-100" alt="...">
+                <img src="{{asset('images/commercial_2.jpeg')}}" class="bookimage d-block w-100" style="height: 325px; object-fit: cover; position: relative;">
             </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselAutoplaying" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselAutoplaying" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselAutoplaying" data-bs-slide="prev"></button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselAutoplaying" data-bs-slide="next"></button>
     </div>
 
     <!-- new release -->
     <div class="card container-fluid mt-3 w-75 pb-5" style="background-color: light">
         <h1 class="text-center mt-3">New Release</h1>
-        <div class='card border-white container-fluid d-flex flex-row m-1 row row-cols-4 g-4 justify-content-center'>
+        <div class='d-flex flex-row m-1 row row-cols-3 g-3 justify-content-center'>
             @include('layout.bookCard')
         </div>
         <div class="d-flex justify-content-center mt-4">
@@ -41,7 +35,7 @@
     <!-- popular -->
     <div class="card container-fluid mt-3 w-75 pb-5" style="background-color: light">
         <h1 class="text-center mt-3">Popular Books</h1>
-        <div class='card border-white container-fluid d-flex flex-row m-1 row row-cols-4 g-4 justify-content-center'>
+        <div class='d-flex flex-row m-1 row row-cols-3 g-3 justify-content-center'>
             @include('layout.bookPopularCard')
         </div>
         <div class="d-flex justify-content-center mt-4">
@@ -52,7 +46,7 @@
     <!-- editors pick -->
     <div class="card container-fluid mt-3 w-75 pb-5" style="background-color: light">
         <h1 class="text-center mt-3">Editor's Pick</h1>
-        <div class='card border-white container-fluid d-flex flex-row m-1 row row-cols-4 g-4 justify-content-center'>
+        <div class='d-flex flex-row m-1 row row-cols-3 g-3 justify-content-center'>
             @include('layout.bookEditorsCard')
         </div>
         <div class="d-flex justify-content-center mt-4">

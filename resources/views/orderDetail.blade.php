@@ -11,7 +11,7 @@
                     $dateForId = Carbon::parse($order->date)->format('Ymd');
                     $returnDate = Carbon::parse($date)->addDays(30)->format('d M Y');
                 @endphp
-                <h1 class="text-center">Order #{{$dateForId}}-{{$order->orderHeaderId}}-{{$order->bookId}}</h1>
+                <h1 class="text-center">Order #{{$dateForId}}-{{$order->orderHeaderId}}</h1>
                 <h5>Member ID: {{$order->orderHeader->memberId}}</h5>
                 <h5>Member Name: {{$order->orderHeader->user->name}}</h5>
                 <h5>Library ID: {{$order->orderHeader->libraryId}}</h5>

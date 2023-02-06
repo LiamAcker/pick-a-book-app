@@ -67,5 +67,5 @@ class AdminController extends BaseController
         return redirect()->route('manageBook');
 
     }
-        
-}       
+
+}
